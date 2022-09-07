@@ -26,18 +26,38 @@ body {
 nav {
   color: #005523;
 
-  max-width: 500px;
-  text-align: center;
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
 
   font-size: 2rem;
   font-weight: bold;
   text-transform: lowercase;
-  margin: auto;
+  margin: 2rem;
 }
 
 button {
   cursor: pointer;
+}
+
+/* SPLASH */ /* SPLASH */ /* SPLASH */
+.splash {
+  background-image: src= "images/IMG_9358.jpg";
+}
+
+.splash h1 {
+  text-align: center;
+
+  color: white;
+}
+
+.splash h2 {
+  text-align: center;
+
+  color: white;
+}
+
+.nav_top {
+  text-align: right;
+  color: white;
 }
 
 /* TEXT */ /* TEXT */ /* TEXT */
