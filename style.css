@@ -28,36 +28,61 @@ nav {
 
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
 
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1rem;
   text-transform: lowercase;
-  margin: 2rem;
 }
 
 button {
   cursor: pointer;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 /* SPLASH */ /* SPLASH */ /* SPLASH */
 .splash {
-  background-image: src= "images/IMG_9358.jpg";
+  display: grid;
+  grid-area: 1/1;
+
+  background-image: url(images/sunstainable_travel_waterfall.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 .splash h1 {
+  /* text-align: center; */
+  grid-area: 1/1;
+  place-self: center center;
   text-align: center;
-
   color: white;
 }
 
 .splash h2 {
-  text-align: center;
+  grid-area: 1/1;
+  place-self: center center;
 
+  text-align: center;
   color: white;
 }
 
-.nav_top {
-  text-align: right;
+.logo {
+  grid-area: 1/1;
+  place-self: start start;
+  font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
+
+  font-size: 1rem;
   color: white;
+  padding: 2rem;
+}
+
+.nav_top {
+  grid-area: 1/1;
+  place-self: start end;
+  text-align: right;
+
+  color: white;
+  padding: 2rem;
 }
 
 /* TEXT */ /* TEXT */ /* TEXT */
@@ -66,14 +91,14 @@ h1 {
   color: #005523;
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
   text-transform: lowercase;
-  font-size: 5rem;
+  font-size: 6rem;
 }
 
 h2 {
   color: #005523;
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
   text-transform: lowercase;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 p {
@@ -82,6 +107,22 @@ p {
   font-size: 1rem;
   line-height: 1.6;
   max-width: 50ch;
+}
+
+/* @media QUIERIES */ /* @media QUIERIES */ /* @media QUIERIES */
+
+@media (min-width: 750px) {
+  h1 {
+    font-size: 7rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  nav {
+    font-size: 1.5rem;
+  }
 }
 
 /* ANIMATION */ /* ANIMATION */ /* ANIMATION */
