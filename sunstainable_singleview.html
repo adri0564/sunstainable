@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SUNSTAINABLE SINGLE VIEW</title>
 
-    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style.css" />
     <style>
       main {
-        max-width: 1200px;
         align-content: center;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -43,7 +42,7 @@
   <body>
     <article class="singlearticle">
       <section>
-        <!-- <img src="" alt="" /> -->
+        <img src="" alt="" />
 
         <h2 class="land"></h2>
         <p class="by"></p>
@@ -85,20 +84,20 @@
 
       function visDetaljer() {
         const single = document.querySelector("article");
-        // single.querySelector("img").src = "billeder/" + destination.billednavn + "-md.jpg";
+        single.querySelector("img").src = "images/" + destination.billede;
 
         single.querySelector(".land").textContent = destination.land;
         single.querySelector(".by").textContent = destination.by;
         single.querySelector(".beskrivelse").textContent = destination.beskrivelse;
-        single.querySelector(".fly-co2").textContent = destination.fly_co2;
+        single.querySelector(".fly-co2").textContent = "CO2 udslip: " + destination.fly_co2 + "g.";
         single.querySelector(".fly-tid").textContent = destination.fly_tid;
-        single.querySelector(".tog-co2").textContent = destination.tog_co2;
+        single.querySelector(".tog-co2").textContent = "CO2 udslip: " + destination.tog_co2 + "g.";
         single.querySelector(".tog-tid").textContent = destination.tog_tid;
-        single.querySelector(".gaa-co2").textContent = destination.gaa_co2;
+        single.querySelector(".gaa-co2").textContent = "CO2 udslip: " + destination.gaa_co2 + "g.";
         single.querySelector(".gaa-tid").textContent = destination.gaa_tid;
-        single.querySelector(".cykel-co2").textContent = destination.cykel_co2;
+        single.querySelector(".cykel-co2").textContent = "CO2 udslip: " + destination.cykel_co2 + "g.";
         single.querySelector(".cykel-tid").textContent = destination.cykel_tid;
-        single.querySelector(".bil-co2").textContent = destination.bil_co2;
+        single.querySelector(".bil-co2").textContent = "CO2 udslip: " + destination.bil_co2 + "g.";
         single.querySelector(".bil-tid").textContent = destination.bil_tid;
       }
 

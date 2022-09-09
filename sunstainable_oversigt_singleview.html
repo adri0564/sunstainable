@@ -9,7 +9,6 @@
 
     <style>
       main {
-        max-width: 1200px;
         align-content: center;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -54,9 +53,9 @@
     <main id="holder"></main>
     <template>
       <article>
-        <!-- <img src="" alt="" /> -->
+        <img src="" alt="" />
         <h2 class="land"></h2>
-        <p class="by"></p>
+        <h2 class="by"></h2>
         <p class="beskrivelse"></p>
       </article>
     </template>
@@ -103,10 +102,10 @@
         destinationer.forEach((destination) => {
           if (filter == destination.kategori || filter == "alle") {
             const klon = skabelon.cloneNode(true);
-            // klon.querySelector("img").src = "billeder/" + destination.billednavn + "-md.jpg";
-            klon.querySelector(".land").textContent = destination.land;
+            klon.querySelector("img").src = "images/" + destination.billedenavn;
+            // klon.querySelector(".land").textContent = destination.land;
             klon.querySelector(".by").textContent = destination.by;
-            klon.querySelector(".beskrivelse").textContent = destination.beskrivelse;
+            // klon.querySelector(".beskrivelse").textContent = destination.beskrivelse;
             klon.querySelector("article").addEventListener("click", () => {
               location.href = "sunstainable_singleview.html?id=" + destination._id;
             });
