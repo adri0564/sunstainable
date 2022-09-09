@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUNSTAINABLE SINGLE VIEW</title>
+
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      main {
+        max-width: 1200px;
+        align-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 1rem;
+      }
+
+      article {
+        border: 2px solid black;
+        margin: 1rem;
+        padding: 0.5rem;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      header {
+        text-align: center;
+      }
+
+      nav {
+        text-align: center;
+      }
+
+      .valgt {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <article class="singlearticle">
+      <section>
+        <!-- <img src="" alt="" /> -->
+
+        <h2 class="land"></h2>
+        <p class="by"></p>
+        <p class="beskrivelse"></p>
+        <p class="fly-co2"></p>
+        <p class="fly-tid"></p>
+        <p class="tog-co2"></p>
+        <p class="tog-tid"></p>
+        <p class="gaa-co2"></p>
+        <p class="gaa-tid"></p>
+        <p class="cykel-co2"></p>
+        <p class="cykel-tid"></p>
+        <p class="bil-co2"></p>
+        <p class="bil-tid"></p>
+
+        <button>tilbage</button>
+      </section>
+    </article>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
+      console.log(id);
+      let destination;
+
+      const endpoint = "https://sunstainable-9f3e.restdb.io/rest/destinationer/" + id;
+      const option = {
+        headers: {
+          "x-apikey": "631b1247fdc15b0265f17272",
+        },
+      };
+
+      async function hentData() {
+        const response = await fetch(endpoint, option);
+        destination = await response.json();
+        console.log("destination", destination);
+        visDetaljer();
+      }
+
+      function visDetaljer() {
+        const single = document.querySelector("article");
+        // single.querySelector("img").src = "billeder/" + destination.billednavn + "-md.jpg";
+
+        single.querySelector(".land").textContent = destination.land;
+        single.querySelector(".by").textContent = destination.by;
+        single.querySelector(".beskrivelse").textContent = destination.beskrivelse;
+        single.querySelector(".fly-co2").textContent = destination.fly_co2;
+        single.querySelector(".fly-tid").textContent = destination.fly_tid;
+        single.querySelector(".tog-co2").textContent = destination.tog_co2;
+        single.querySelector(".tog-tid").textContent = destination.tog_tid;
+        single.querySelector(".gaa-co2").textContent = destination.gaa_co2;
+        single.querySelector(".gaa-tid").textContent = destination.gaa_tid;
+        single.querySelector(".cykel-co2").textContent = destination.cykel_co2;
+        single.querySelector(".cykel-tid").textContent = destination.cykel_tid;
+        single.querySelector(".bil-co2").textContent = destination.bil_co2;
+        single.querySelector(".bil-tid").textContent = destination.bil_tid;
+      }
+
+      document.querySelector("button").addEventListener("click", tilbageTilMenu);
+      function tilbageTilMenu() {
+        history.back();
+      }
+
+      hentData();
+    </script>
+  </body>
+</html>

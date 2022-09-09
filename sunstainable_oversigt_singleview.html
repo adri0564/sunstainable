@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUNSTAINABLE SINGLEVIEW OVERSIGT</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      main {
+        max-width: 1200px;
+        align-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 1rem;
+      }
+
+      article {
+        border: 2px solid black;
+        margin: 1rem;
+        padding: 0.5rem;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      header {
+        text-align: center;
+      }
+
+      nav {
+        text-align: center;
+      }
+
+      .valgt {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Alle</h1>
+    </header>
+    <nav>
+      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="danmark">Danmark</button>
+      <button data-kategori="tyskland">Tyskland</button>
+      <button data-kategori="italien">Italien</button>
+      <button data-kategori="norge">Norge</button>
+    </nav>
+    <main id="holder"></main>
+    <template>
+      <article>
+        <!-- <img src="" alt="" /> -->
+        <h2 class="land"></h2>
+        <p class="by"></p>
+        <p class="beskrivelse"></p>
+      </article>
+    </template>
+
+    <script>
+      const header = document.querySelector("header h1");
+      const endpoint = "https://sunstainable-9f3e.restdb.io/rest/destinationer";
+      const option = {
+        headers: {
+          "x-apikey": "631b1247fdc15b0265f17272",
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", start);
+      let destinationer;
+
+      let filter = "alle";
+      function start() {
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerDestinationer));
+        hentData();
+      }
+
+      function filtrerDestinationer() {
+        filter = this.dataset.kategori;
+        document.querySelector(".valgt").classList.remove("valgt");
+        this.classList.add("valgt");
+
+        visDestinationer();
+        header.textContent = this.textContent;
+      }
+
+      async function hentData() {
+        const response = await fetch(endpoint, option);
+        destinationer = await response.json();
+        console.log("destinationer", destinationer);
+        visDestinationer();
+      }
+
+      function visDestinationer() {
+        const holder = document.querySelector("#holder");
+        const skabelon = document.querySelector("template").content;
+        holder.textContent = "";
+        destinationer.forEach((destination) => {
+          if (filter == destination.kategori || filter == "alle") {
+            const klon = skabelon.cloneNode(true);
+            // klon.querySelector("img").src = "billeder/" + destination.billednavn + "-md.jpg";
+            klon.querySelector(".land").textContent = destination.land;
+            klon.querySelector(".by").textContent = destination.by;
+            klon.querySelector(".beskrivelse").textContent = destination.beskrivelse;
+            klon.querySelector("article").addEventListener("click", () => {
+              location.href = "sunstainable_singleview.html?id=" + destination._id;
+            });
+
+            holder.appendChild(klon);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
