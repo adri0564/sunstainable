@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="style.css" />
     <style>
-      main {
+      /* main {
         align-content: center;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -25,38 +25,40 @@
         max-width: 100%;
       }
 
-      header {
-        text-align: center;
-      }
 
-      nav {
-        text-align: center;
-      }
 
-      .valgt {
-        background-color: red;
-      }
+       */
     </style>
   </head>
 
   <body>
     <article class="singlearticle">
       <section>
-        <img src="" alt="" />
+        <h2 class="by_land"></h2>
+        <img src="temp" alt="temp" />
 
-        <h2 class="land"></h2>
-        <p class="by"></p>
         <p class="beskrivelse"></p>
-        <p class="fly-co2"></p>
-        <p class="fly-tid"></p>
-        <p class="tog-co2"></p>
-        <p class="tog-tid"></p>
-        <p class="gaa-co2"></p>
-        <p class="gaa-tid"></p>
-        <p class="cykel-co2"></p>
-        <p class="cykel-tid"></p>
-        <p class="bil-co2"></p>
-        <p class="bil-tid"></p>
+        <section class="stats_container">
+          <div class="co2_container">
+            <h2>Transportmiddel</h2>
+            <p class="fly-co2"></p>
+            <p class="tog-co2"></p>
+            <p class="gaa-co2"></p>
+            <p class="cykel-co2"></p>
+            <p class="bil-co2"></p>
+          </div>
+          <div class="tid_container">
+            <h2>Rejselængde</h2>
+            <p class="fly-tid"></p>
+            <p class="tog-tid"></p>
+            <p class="gaa-tid"></p>
+            <p class="cykel-tid"></p>
+            <p class="bil-tid"></p>
+          </div>
+          <div class="reddet_container">
+            <h2>Du Har reddet</h2>
+          </div>
+        </section>
 
         <button>tilbage</button>
       </section>
@@ -84,10 +86,10 @@
 
       function visDetaljer() {
         const single = document.querySelector("article");
-        single.querySelector("img").src = "images/" + destination.billede;
+        single.querySelector("img").src = "images/" + destination.billedenavn;
 
-        single.querySelector(".land").textContent = destination.land;
-        single.querySelector(".by").textContent = destination.by;
+        // single.querySelector(".land").textContent = destination.land;
+        single.querySelector(".by_land").textContent = destination.by + ", " + destination.land;
         single.querySelector(".beskrivelse").textContent = destination.beskrivelse;
         single.querySelector(".fly-co2").textContent = "CO2 udslip: " + destination.fly_co2 + "g.";
         single.querySelector(".fly-tid").textContent = destination.fly_tid;
