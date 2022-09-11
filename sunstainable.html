@@ -29,26 +29,70 @@
       <button data-kategori="Italien">Italien</button>
       <button data-kategori="Norge">Norge</button>
     </nav>
-    <main id="holder">
-      <div class="test_div"><h2>Møn</h2></div>
-      <div class="test_div"><h2>Thy</h2></div>
-      <div class="test_div"><h2>Berlin</h2></div>
-
-      <div class="test_div"><h2>Trier</h2></div>
-      <div class="test_div"><h2>Toscana</h2></div>
-      <div class="test_div"><h2>Napoli</h2></div>
-      <div class="test_div"><h2>Oslo</h2></div>
-      <div class="test_div"><h2>Bergen</h2></div>
-    </main>
+    <main id="holder"></main>
     <template>
       <article>
         <img src="" alt="" />
+        <h2 class="land"></h2>
         <h2 class="by"></h2>
-        <p class="land"></p>
-        <p class="transportmiddel"></p>
-        <p class="co2"></p>
         <p class="beskrivelse"></p>
       </article>
     </template>
+
+    <script>
+      const header = document.querySelector("header h1");
+      const endpoint = "https://sunstainable-9f3e.restdb.io/rest/destinationer";
+      const option = {
+        headers: {
+          "x-apikey": "631b1247fdc15b0265f17272",
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", start);
+      let destinationer;
+
+      let filter = "alle";
+      function start() {
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerDestinationer));
+        hentData();
+      }
+
+      function filtrerDestinationer() {
+        filter = this.dataset.kategori;
+        document.querySelector(".valgt").classList.remove("valgt");
+        this.classList.add("valgt");
+
+        visDestinationer();
+        header.textContent = this.textContent;
+      }
+
+      async function hentData() {
+        const response = await fetch(endpoint, option);
+        destinationer = await response.json();
+        console.log("destinationer", destinationer);
+        visDestinationer();
+      }
+
+      function visDestinationer() {
+        const holder = document.querySelector("#holder");
+        const skabelon = document.querySelector("template").content;
+        holder.textContent = "";
+        destinationer.forEach((destination) => {
+          if (filter == destination.kategori || filter == "alle") {
+            const klon = skabelon.cloneNode(true);
+            klon.querySelector("img").src = "images/" + destination.billedenavn;
+            // klon.querySelector(".land").textContent = destination.land;
+            klon.querySelector(".by").textContent = destination.by;
+            // klon.querySelector(".beskrivelse").textContent = destination.beskrivelse;
+            klon.querySelector("article").addEventListener("click", () => {
+              location.href = "sunstainable_singleview.html?id=" + destination._id;
+            });
+
+            holder.appendChild(klon);
+          }
+        });
+      }
+    </script>
   </body>
 </html>
