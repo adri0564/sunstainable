@@ -88,8 +88,8 @@ button {
 .nav_destinationer button {
   color: white;
   background-color: #005523;
-  margin: 1rem 2rem 1rem 2rem;
-  padding: 0.5rem 2rem 0.5rem 2rem;
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   border-radius: 20px;
 }
 
@@ -147,6 +147,26 @@ main {
   padding: 2rem;
 }
 
+/* GUIDES section */ /* GUIDES section */
+
+.guides {
+  text-align: center;
+  margin: 5rem;
+}
+
+.guides article h3 {
+  text-align: center;
+  margin: 0rem 0rem 5rem 0rem;
+}
+
+.guides article p {
+  text-align: center;
+  margin: 1rem 2rem 0rem 2rem;
+}
+.guides img {
+  max-width: 120px;
+}
+
 /* @media QUIERIES */ /* @media QUIERIES */ /* @media QUIERIES */
 
 @media (min-width: 750px) {
@@ -175,6 +195,13 @@ main {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     padding: 1rem;
+  }
+
+  .guides {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* padding: 0rem 10rem 0rem 10rem; */
   }
 }
 
