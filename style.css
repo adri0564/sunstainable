@@ -40,8 +40,6 @@ button {
   margin-right: 1rem;
 }
 
-template
-
 /* SPLASH */ /* SPLASH */ /* SPLASH */
 .splash {
   display: grid;
@@ -184,7 +182,6 @@ main {
 
 #holder article:hover {
   cursor: pointer;
-
   animation: zoom-in-zoom-out 0.4s ease 1;
 }
 
