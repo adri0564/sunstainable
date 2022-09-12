@@ -32,6 +32,14 @@
   </head>
 
   <body>
+    <section class="menu">
+      <div class="logo">logo</div>
+      <nav class="nav_top">
+        <button><a href="sunstainable.html">destinationer</a></button>
+        <button><a href="om-os.html">om os</a></button>
+      </nav>
+    </section>
+
     <article class="singlearticle">
       <section>
         <h2 class="by_land"></h2>
@@ -41,33 +49,48 @@
         <section class="stats_container">
           <div class="co2_container">
             <h3>Transportmiddel</h3>
-            <img class="fly-co2" src="images/fly.svg" alt="" />
-            <img src="images/tog.svg" alt="" />
-            <img src="images/gaa.svg" alt="" />
-            <img src="images/cykel.svg" alt="" />
-            <img src="images/cykel.svg" alt="" />
-
+            <img class="fly-logo" src="images/fly.svg" alt="" />
             <p class="fly-co2"></p>
+            <img class="tog-logo" src="images/tog.svg" alt="" />
             <p class="tog-co2"></p>
+            <img class="gaa-logo" src="images/gaa.svg" alt="" />
             <p class="gaa-co2"></p>
+            <img class="cykel-logo" src="images/cykel.svg" alt="" />
             <p class="cykel-co2"></p>
+            <img class="bil-logo" src="images/bil.svg" alt="" />
             <p class="bil-co2"></p>
           </div>
           <div class="tid_container">
             <h3>Rejselængde</h3>
+            <img class="fly-logo" src="images/fly.svg" alt="" />
             <p class="fly-tid"></p>
+            <img class="tog-logo" src="images/tog.svg" alt="" />
             <p class="tog-tid"></p>
+            <img class="gaa-logo" src="images/gaa.svg" alt="" />
             <p class="gaa-tid"></p>
+            <img class="cykel-logo" src="images/cykel.svg" alt="" />
             <p class="cykel-tid"></p>
+            <img class="bil-logo" src="images/bil.svg" alt="" />
             <p class="bil-tid"></p>
           </div>
-          <div class="reddet_container">
+          <div class="bad_container">
             <h3>Du Har reddet</h3>
+            <img class="fly-logo" src="images/fly.svg" alt="" />
+            <p class="fly-bad"></p>
+            <img class="tog-logo" src="images/tog.svg" alt="" />
+            <p class="tog-bad"></p>
+            <img class="gaa-logo" src="images/gaa.svg" alt="" />
+            <p class="gaa-bad"></p>
+            <img class="cykel-logo" src="images/cykel.svg" alt="" />
+            <p class="cykel-bad"></p>
+            <img class="bil-logo" src="images/bil.svg" alt="" />
+            <p class="bil-bad"></p>
           </div>
         </section>
-        <h2>mere grøn guidance</h2>
       </section>
     </article>
+    <h2>mere grøn guidance</h2>
+
     <section class="overnatning">
       <h3>overnatning</h3>
       <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
@@ -105,16 +128,26 @@
         // single.querySelector(".land").textContent = destination.land;
         single.querySelector(".by_land").textContent = destination.by + ", " + destination.land;
         single.querySelector(".beskrivelse").textContent = destination.beskrivelse;
-        single.querySelector(".fly-co2").textContent = "CO2 udslip: " + destination.fly_co2 + "g.";
+
+        single.querySelector(".fly-co2").textContent = "CO2 udslip: " + destination.fly_co2 + "g";
         single.querySelector(".fly-tid").textContent = destination.fly_tid;
-        single.querySelector(".tog-co2").textContent = "CO2 udslip: " + destination.tog_co2 + "g.";
+        single.querySelector(".fly-bad").textContent = destination.fly_bad;
+
+        single.querySelector(".tog-co2").textContent = "CO2 udslip: " + destination.tog_co2 + "g";
         single.querySelector(".tog-tid").textContent = destination.tog_tid;
-        single.querySelector(".gaa-co2").textContent = "CO2 udslip: " + destination.gaa_co2 + "g.";
+        single.querySelector(".tog-bad").textContent = destination.tog_bad;
+
+        single.querySelector(".gaa-co2").textContent = "CO2 udslip: " + destination.gaa_co2 + "g";
         single.querySelector(".gaa-tid").textContent = destination.gaa_tid;
-        single.querySelector(".cykel-co2").textContent = "CO2 udslip: " + destination.cykel_co2 + "g.";
+        single.querySelector(".gaa-bad").textContent = destination.gaa_bad;
+
+        single.querySelector(".cykel-co2").textContent = "CO2 udslip: " + destination.cykel_co2 + "g";
         single.querySelector(".cykel-tid").textContent = destination.cykel_tid;
-        single.querySelector(".bil-co2").textContent = "CO2 udslip: " + destination.bil_co2 + "g.";
+        single.querySelector(".cykel-bad").textContent = destination.cykel_bad;
+
+        single.querySelector(".bil-co2").textContent = "CO2 udslip: " + destination.bil_co2 + "g";
         single.querySelector(".bil-tid").textContent = destination.bil_tid;
+        single.querySelector(".bil-bad").textContent = destination.bil_bad;
       }
 
       document.querySelector("button").addEventListener("click", tilbageTilMenu);
