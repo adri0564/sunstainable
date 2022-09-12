@@ -40,6 +40,8 @@ button {
   margin-right: 1rem;
 }
 
+template
+
 /* SPLASH */ /* SPLASH */ /* SPLASH */
 .splash {
   display: grid;
@@ -181,6 +183,8 @@ main {
 /* ANIMATION */ /* ANIMATION */ /* ANIMATION */
 
 #holder article:hover {
+  cursor: pointer;
+
   animation: zoom-in-zoom-out 0.4s ease 1;
 }
 
@@ -294,6 +298,7 @@ article h2 {
     margin-bottom: 40px;
     gap: 60px;
     padding-top: 1.5rem;
+    padding-inline: 2rem;
   }
 
   .tekst_omos2 {
