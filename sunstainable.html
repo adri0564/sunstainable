@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUNSTAINABLE</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header></header>
+    <section class="splash">
+      <img class="logo" src="images/sunstainable_logo_white.svg" alt="sunstainable's logo" />
+
+      <nav class="nav_top">
+        <button><a href="sunstainable.html">destinationer</a></button>
+        <button><a href="om-os.html">om os</a></button>
+      </nav>
+      <div>
+        <h1>where next?</h1>
+        <h2>din guide til <span style="color: #005523">grønnere</span> rejser</h2>
+      </div>
+    </section>
+    <section class="guides">
+      <article>
+        <img src="images/transport_symbol.svg" alt="bæredygtigt transport symbol" />
+        <p>guide til bæredygtig</p>
+        <h3>transport</h3>
+      </article>
+      <article>
+        <img src="images/restauranter_symbol.svg" alt="bæredygtigt restaurant symbol" />
+        <p>guide til bæredygtige</p>
+        <h3>restauranter</h3>
+      </article>
+      <article>
+        <img src="images/hoteller_symbol.svg" alt="bæredygtigt hotel symbol" />
+        <p>guide til bæredygtige</p>
+        <h3>hoteller</h3>
+      </article>
+    </section>
+    <div class="destinationer_header"><h2>grønnere rejser</h2></div>
+    <nav class="nav_destinationer">
+      <button data-kategori="Alle" class="valgt">alle</button>
+      <button data-kategori="Danmark">Danmark</button>
+      <button data-kategori="Tyskland">Tyskland</button>
+      <button data-kategori="Italien">Italien</button>
+      <button data-kategori="Norge">Norge</button>
+    </nav>
+    <main id="holder"></main>
+    <template>
+      <article>
+        <img src="" alt="" />
+        <h2 class="land"></h2>
+        <h2 class="by"></h2>
+        <p class="beskrivelse"></p>
+      </article>
+    </template>
+
+    <script>
+      const header = document.querySelector("header h1");
+      const endpoint = "https://sunstainable-9f3e.restdb.io/rest/destinationer";
+      const option = {
+        headers: {
+          "x-apikey": "631b1247fdc15b0265f17272",
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", start);
+      let destinationer;
+
+      let filter = "alle";
+      function start() {
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerDestinationer));
+        hentData();
+      }
+
+      function filtrerDestinationer() {
+        filter = this.dataset.kategori;
+        document.querySelector(".valgt").classList.remove("valgt");
+        this.classList.add("valgt");
+
+        visDestinationer();
+        header.textContent = this.textContent;
+      }
+
+      async function hentData() {
+        const response = await fetch(endpoint, option);
+        destinationer = await response.json();
+        console.log("destinationer", destinationer);
+        visDestinationer();
+      }
+
+      function visDestinationer() {
+        const holder = document.querySelector("#holder");
+        const skabelon = document.querySelector("template").content;
+        holder.textContent = "";
+        destinationer.forEach((destination) => {
+          if (filter == destination.kategori || filter == "alle") {
+            const klon = skabelon.cloneNode(true);
+            klon.querySelector("img").src = "images/" + destination.billedenavn;
+            // klon.querySelector(".land").textContent = destination.land;
+            klon.querySelector(".by").textContent = destination.by;
+            // klon.querySelector(".beskrivelse").textContent = destination.beskrivelse;
+            klon.querySelector("article").addEventListener("click", () => {
+              location.href = "sunstainable_singleview.html?id=" + destination._id;
+            });
+
+            holder.appendChild(klon);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
