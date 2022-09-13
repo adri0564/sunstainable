@@ -73,7 +73,7 @@
 
       let filter = "alle";
       function start() {
-        const filterKnapper = document.querySelectorAll("nav button");
+        const filterKnapper = document.querySelectorAll(".nav_destinationer button");
         filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerDestinationer));
         hentData();
       }
