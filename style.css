@@ -345,3 +345,49 @@ article h2 {
   font-size: 2rem;
   text-align: end;
 }
+
+/* SARAHS ÆNDRINGER PÅ SINGLEVIEW */
+.overnatning {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+
+.mad {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+
+.mindre_logo_singleview {
+  max-width: 100px;
+}
+
+.grid_logo_tekst_singleview {
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+}
+
+@media (min-width: 850px) {
+  .grid_img_singleview {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-inline: 2rem;
+  }
+}
+
+.grid_img_singleview {
+  margin-inline: 2rem;
+}
+
+figcaption {
+  background-color: #005523;
+  padding: 1.5rem;
+  color: white;
+  font-family: serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
