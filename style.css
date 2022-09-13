@@ -44,8 +44,7 @@ button {
 .splash {
   display: grid;
   grid-area: 1/1;
-
-  background-image: url(images/sunstainable_travel_waterfall.jpeg);
+  background-image: url(images/sunstainable_travel_waterfall.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -67,9 +66,12 @@ button {
   color: white;
 }
 
-.logo {
+.splash a {
   grid-area: 1/1;
   place-self: start start;
+}
+
+.logo {
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
 
   font-size: 1rem;
@@ -129,7 +131,6 @@ h2 {
 h3 {
   color: #005523;
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
-
   text-transform: lowercase;
   font-size: 1.5rem;
   margin: 2rem;
@@ -220,6 +221,7 @@ main {
 
 button:hover {
   animation: zoom-in-zoom-out 0.3s ease 1;
+  background-color: #567a54;
 }
 
 @keyframes zoom-in-zoom-out {
@@ -268,6 +270,11 @@ article h2 {
 .menu nav {
   place-self: start end;
   text-align: right;
+}
+
+.menu a {
+  grid-area: 1/1;
+  place-self: start start;
 }
 
 .stats_container h3 {
