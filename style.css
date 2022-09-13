@@ -72,12 +72,10 @@ button {
 }
 
 .logo {
-  font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
-  font-size: 1rem;
   color: white;
   padding: 2rem;
-  min-width: auto;
-  max-width: 180px;
+  min-width: 130px;
+  max-width: 200px;
 }
 
 .nav_top {
@@ -189,10 +187,6 @@ main {
   }
 
   nav {
-    font-size: 1.5rem;
-  }
-
-  .logo {
     font-size: 1.5rem;
   }
 
