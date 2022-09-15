@@ -71,9 +71,6 @@ button {
   place-self: start start;
 }
 
-.oprykning {
-}
-
 .logo {
   color: white;
   padding: 2rem;
@@ -107,6 +104,11 @@ button {
   border-radius: 20px;
 }
 
+.outline {
+  color: #005523;
+  -webkit-text-stroke: 1px whitesmoke;
+}
+
 /* TEXT */ /* TEXT */ /* TEXT */
 
 h1 {
@@ -121,11 +123,7 @@ h2 {
   font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
   text-transform: lowercase;
   font-size: 2rem;
-  margin: 2rem;
-}
-
-.margin_h2 {
-  margin: 0rem;
+  margin: 2rem 0rem 2rem 1rem;
 }
 
 h3 {
@@ -233,7 +231,7 @@ button:hover {
 }
 
 img {
-  max-width: 100%;
+  max-width: 88%;
   object-fit: contain;
 }
 
@@ -337,6 +335,22 @@ article h2 {
   .tekst_omos2 {
     order: 1;
   }
+  .grid_singleview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem 0rem 2rem 2rem;
+    gap: 10px;
+  }
+
+  .beskrivelse {
+    font-size: 3rem;
+    font-style: italic;
+    justify-content: center;
+    padding: 2rem 1rem 0rem 1rem;
+  }
+  .by_land img {
+    width: 60%;
+  }
 }
 
 .citat {
@@ -390,4 +404,23 @@ figcaption {
   line-height: 1.6;
   margin-top: -1rem;
   margin-bottom: 2rem;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #005523;
+  color: #f5ebe0;
+  padding-inline: 2rem;
+  margin-top: 3rem;
+}
+
+.footerp {
+  color: #f5ebe0;
+}
+
+h4 {
+  color: #f5ebe0;
+  padding: 1rem;
+  font-family: "akzidenzgroteskregularblack", helvetica, sans-serif;
 }

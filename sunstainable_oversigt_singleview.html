@@ -44,7 +44,7 @@
       <h1>Alle</h1>
     </header>
     <nav>
-      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="alle" class="valgt focusColor">Alle</button>
       <button data-kategori="danmark">Danmark</button>
       <button data-kategori="tyskland">Tyskland</button>
       <button data-kategori="italien">Italien</button>
@@ -82,6 +82,7 @@
       function filtrerDestinationer() {
         filter = this.dataset.kategori;
         document.querySelector(".valgt").classList.remove("valgt");
+
         this.classList.add("valgt");
 
         visDestinationer();

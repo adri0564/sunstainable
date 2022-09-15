@@ -22,9 +22,16 @@
 
     <article class="singlearticle">
       <section>
-        <h2 class="by_land"></h2>
-        <p class="beskrivelse"></p>
-        <img src="temp" alt="temp" />
+        <section class="grid_singleview">
+          <div>
+            <h2 class="by_land"></h2>
+
+            <p class="beskrivelse"></p>
+          </div>
+          <div>
+            <img src="temp" alt="temp" />
+          </div>
+        </section>
 
         <section class="stats_container">
           <div class="co2_container">
@@ -118,6 +125,24 @@
     </section>
     <button class="tilbage">tilbage</button>
 
+    <footer>
+      <div>
+        <h4>information</h4>
+        <p class="footerp">
+          Kontakt os <br />
+          Generelle betingelser <br />
+          Kundeservice
+        </p>
+      </div>
+      <div>
+        <h4>yderligere oplysninger</h4>
+        <p class="footerp">
+          CVR NR.XOXOXOXO <br />
+          Tlf. 12345678 <br />
+          E-mail: lorem@ipsum.dk
+        </p>
+      </div>
+    </footer>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       let id = urlParams.get("id");
@@ -167,7 +192,7 @@
         single.querySelector(".bil-bad").textContent = destination.bil_bad;
       }
 
-      document.querySelector("button").addEventListener("click", tilbageTilMenu);
+      document.querySelector(".tilbage").addEventListener("click", tilbageTilMenu);
       function tilbageTilMenu() {
         history.back();
       }
