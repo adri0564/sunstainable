@@ -106,7 +106,8 @@ button {
 
 .outline {
   color: #005523;
-  -webkit-text-stroke: 1px whitesmoke;
+  /* -webkit-text-stroke: 1px whitesmoke; */
+  text-shadow: 0px 0px 10px #ffffff;
 }
 
 /* TEXT */ /* TEXT */ /* TEXT */
@@ -141,6 +142,10 @@ p {
   line-height: 1.6;
   max-width: 60ch;
   margin: 1rem;
+}
+
+#holder h2 {
+  text-shadow: 0px 0px 10px #4e4e4e;
 }
 
 /* MAIN DESTINATIONER container */
@@ -215,6 +220,13 @@ main {
 
 button:hover {
   animation: zoom-in-zoom-out 0.3s ease 1;
+}
+
+.nav_destinationer button:hover {
+  background-color: #567a54;
+}
+
+.tilbage:hover {
   background-color: #567a54;
 }
 

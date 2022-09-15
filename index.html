@@ -53,9 +53,7 @@
     <template>
       <article>
         <img src="" alt="" />
-        <h2 class="land"></h2>
         <h2 class="by"></h2>
-        <p class="beskrivelse"></p>
       </article>
     </template>
 
@@ -78,56 +76,74 @@
       </div>
     </footer>
     <script>
+      // konstant til vores "filtrerings"-overskrift
       const header = document.querySelector(".margin_h2");
+      // link til vores eksterne database
       const endpoint = "https://sunstainable-9f3e.restdb.io/rest/destinationer";
+      // API nøgle giver adgang til data
       const option = {
         headers: {
           "x-apikey": "631b1247fdc15b0265f17272",
         },
       };
 
+      // når DOM er loaded, start funktionen 'start'
       document.addEventListener("DOMContentLoaded", start);
+      // en global variabel; destinationer (json)
       let destinationer;
-
+      // variablen alle. Bruges sådan at alle destinationer vises som udgangspunkt
       let filter = "alle";
+
       function start() {
+        // alt afhængigt af knappen du klikker på, filtreres der, så kunne destinationer i denne kategori (lande) vises
         const filterKnapper = document.querySelectorAll(".nav_destinationer button");
         filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerDestinationer));
         hentData();
       }
 
       function filtrerDestinationer() {
+        // finder de destinationer som matcher med den valgte data-attribut; 'land'
         filter = this.dataset.land;
+        // fjerner 'valgt' fra alle
         document.querySelector(".valgt").classList.remove("valgt");
+        // 'valgt' tilføjes til den valgte kategori
         this.classList.add("valgt");
 
         visDestinationer();
         header.textContent = this.textContent;
       }
-
+      // en asynkron funktion henter vores json-data med fetch
       async function hentData() {
         const response = await fetch(endpoint, option);
+        // json = destinationer
         destinationer = await response.json();
         console.log("destinationer", destinationer);
+        // kalder visDestinationer
         visDestinationer();
       }
 
       function visDestinationer() {
+        // konstanten 'holder' er sektionen hvor i vores template ligger
         const holder = document.querySelector("#holder");
+        // konstanten 'skabelon' refererer til det template som vores data ender i
         const skabelon = document.querySelector("template").content;
+        // fjern/tøm 'holder' for indhold
         holder.textContent = "";
         console.log(filter);
+        // for hvert objekt i vores array, skal følgende ske
         destinationer.forEach((destination) => {
+          // hvis der filtreres på lande, vise destinationer i dette land. Vælger du ikke et land, vises alle destinationer
           if (filter == destination.land || filter == "alle") {
+            // konstanten 'clon'. Hver destination får (klonet) sin egen skabelon.
             const klon = skabelon.cloneNode(true);
+            // den enkelte destinations indhold/data i vores loopview
             klon.querySelector("img").src = "images/" + destination.billedenavn;
-            // klon.querySelector(".land").textContent = destination.land;
             klon.querySelector(".by").textContent = destination.by;
-            // klon.querySelector(".beskrivelse").textContent = destination.beskrivelse;
+            // der lyttes efter om du klikker på klonen (destinationen). Klikker åbner vi en URL, hvis navn kommer fra destinationens id (json)
             klon.querySelector("article").addEventListener("click", () => {
               location.href = "sunstainable_singleview.html?id=" + destination._id;
             });
-
+            // i vores 'holder' tilføjer vi den ovenstående klon
             holder.appendChild(klon);
           }
         });

@@ -148,26 +148,30 @@
       let id = urlParams.get("id");
       console.log(id);
       let destination;
-
+      // link til vores eksterne database
       const endpoint = "https://sunstainable-9f3e.restdb.io/rest/destinationer/" + id;
+      // API nøgle giver adgang til data
       const option = {
         headers: {
           "x-apikey": "631b1247fdc15b0265f17272",
         },
       };
 
+      // en asynkron funktion henter vores json-data med fetch
       async function hentData() {
         const response = await fetch(endpoint, option);
+        // json = destinationer
         destination = await response.json();
         console.log("destination", destination);
+        // kalder visDetaljer
         visDetaljer();
       }
 
       function visDetaljer() {
         const single = document.querySelector("article");
+        // vi har givet plads til vores destinationers forskellige data-attributter i særlige klasser i html
         single.querySelector("img").src = "images/" + destination.billedenavn;
 
-        // single.querySelector(".land").textContent = destination.land;
         single.querySelector(".by_land").textContent = destination.by + ", " + destination.land;
         single.querySelector(".beskrivelse").textContent = destination.beskrivelse;
 
@@ -191,7 +195,7 @@
         single.querySelector(".bil-tid").textContent = destination.bil_tid;
         single.querySelector(".bil-bad").textContent = destination.bil_bad;
       }
-
+      // på vores tilbage-knap lytter vi efter klik. Klikker du bliver du sendt et skridt tilbage i historikken
       document.querySelector(".tilbage").addEventListener("click", tilbageTilMenu);
       function tilbageTilMenu() {
         history.back();
